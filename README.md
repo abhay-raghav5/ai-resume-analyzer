@@ -25,6 +25,10 @@ An AI-powered Resume Analyzer built using Streamlit.
 4. ATS Score Calculation
 5. Suggestions & Visualization
 
+## 🌐 Live Demo
+Try the app here:  
+https://ai-resume-analyzer-bzak5mrubpnar9z2ubzg8l.streamlit.app/
+
 ## ▶️ Run Locally
 
 ```bash
