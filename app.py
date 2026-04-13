@@ -191,9 +191,9 @@ def _load_pdf_libs():
 
 def _load_ocr_libs():
     """pytesseract + PIL — sirf image files ke liye"""
-    import pytesseract
+    
     from PIL import Image
-    return pytesseract, Image
+    # return pytesseract, Image
 
 def _load_plotly():
     """plotly — sirf chart banate waqt"""
@@ -497,7 +497,7 @@ st.caption("Upload your resume — PDF ya image — aur instant ATS score, skill
 
 uploaded_file = st.file_uploader(
     "Resume upload karo (PDF, PNG, JPG)",
-    type=["pdf", "png", "jpg", "jpeg"],
+    type=["pdf"],
     label_visibility="visible",
 )
 
