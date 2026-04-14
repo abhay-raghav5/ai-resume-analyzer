@@ -22,8 +22,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-st.markdown(
-    """
+st.markdown("""
 <style>
 div.stButton > button {
     background-color: #1a73e8;
@@ -139,350 +138,112 @@ div.stButton > button:active {
     margin: 0;
 }
 </style>
-""",
-    unsafe_allow_html=True,
-)
+""", unsafe_allow_html=True)
 
 
 # ─────────────────────────────────────────────
 # CONSTANTS
 # ─────────────────────────────────────────────
 import datetime
-
 CURRENT_YEAR = datetime.datetime.now().year
 
 SKILLS_DB: list[str] = [
     # Languages
-    "python",
-    "java",
-    "c++",
-    "c#",
-    "go",
-    "rust",
-    "r",
-    "scala",
-    "swift",
+    "python", "java", "c++", "c#", "go", "rust", "r", "scala", "swift",
     # Data / DB
-    "sql",
-    "nosql",
-    "excel",
-    "vba",
-    "mongodb",
-    "mysql",
-    "postgresql",
-    "redis",
-    "sqlite",
+    "sql", "nosql", "excel", "vba",
+    "mongodb", "mysql", "postgresql", "redis", "sqlite",
     # ML / AI
-    "machine learning",
-    "deep learning",
-    "nlp",
-    "computer vision",
-    "data cleaning",
-    "data visualization",
-    "data wrangling",
-    "feature engineering",
-    "statistics",
-    "tensorflow",
-    "pytorch",
-    "keras",
-    "scikit-learn",
-    "xgboost",
-    "lightgbm",
-    "pandas",
-    "numpy",
-    "matplotlib",
-    "seaborn",
-    "opencv",
+    "machine learning", "deep learning", "nlp", "computer vision",
+    "data cleaning", "data visualization", "data wrangling",
+    "feature engineering", "statistics",
+    "tensorflow", "pytorch", "keras", "scikit-learn", "xgboost", "lightgbm",
+    "pandas", "numpy", "matplotlib", "seaborn", "opencv",
     # Web
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "react",
-    "vue",
-    "angular",
-    "next.js",
-    "node.js",
-    "express.js",
-    "django",
-    "flask",
-    "fastapi",
+    "html", "css", "javascript", "typescript",
+    "react", "vue", "angular", "next.js",
+    "node.js", "express.js", "django", "flask", "fastapi",
     # DevOps / Cloud
-    "docker",
-    "kubernetes",
-    "ci/cd",
-    "jenkins",
-    "github actions",
-    "aws",
-    "gcp",
-    "azure",
-    "cloud",
-    "linux",
-    "bash",
-    "networking",
+    "docker", "kubernetes", "ci/cd", "jenkins", "github actions",
+    "aws", "gcp", "azure", "cloud",
+    "linux", "bash", "networking",
     # BI / Analytics
-    "power bi",
-    "tableau",
-    "looker",
-    "google analytics",
+    "power bi", "tableau", "looker", "google analytics",
     # Design
-    "figma",
-    "sketch",
-    "adobe xd",
-    "design thinking",
-    "user testing",
-    "color theory",
-    "typography",
-    "responsive design",
+    "figma", "sketch", "adobe xd", "design thinking",
+    "user testing", "color theory", "typography", "responsive design",
     # Mobile
-    "flutter",
-    "kotlin",
-    "react native",
-    "android",
-    "ios",
+    "flutter", "kotlin", "react native", "android", "ios",
     # Tools
-    "git",
-    "github",
-    "gitlab",
-    "debugging",
-    "jira",
-    "agile",
-    "scrum",
+    "git", "github", "gitlab", "debugging", "jira", "agile", "scrum",
     # CS fundamentals
-    "data structures",
-    "algorithms",
-    "oops",
-    "system design",
+    "data structures", "algorithms", "oops", "system design",
     # APIs
-    "api integration",
-    "rest api",
-    "graphql",
+    "api integration", "rest api", "graphql",
     # Marketing
-    "seo",
-    "content marketing",
+    "seo", "content marketing",
 ]
 
 ROLE_SKILLS: dict[str, list[str]] = {
-    "AI Engineer": [
-        "machine learning",
-        "deep learning",
-        "tensorflow",
-        "pytorch",
-        "python",
-        "nlp",
-        "computer vision",
-    ],
-    "Web Developer": [
-        "html",
-        "css",
-        "javascript",
-        "react",
-        "node.js",
-        "express.js",
-        "mongodb",
-        "mysql",
-        "git",
-    ],
-    "Data Analyst": [
-        "excel",
-        "sql",
-        "power bi",
-        "tableau",
-        "python",
-        "statistics",
-        "pandas",
-        "numpy",
-        "google analytics",
-    ],
-    "Software Engineer": [
-        "java",
-        "c++",
-        "python",
-        "data structures",
-        "algorithms",
-        "oops",
-        "debugging",
-        "linux",
-        "git",
-    ],
-    "Data Scientist": [
-        "python",
-        "pandas",
-        "numpy",
-        "scikit-learn",
-        "machine learning",
-        "deep learning",
-        "tensorflow",
-        "pytorch",
-        "statistics",
-        "data wrangling",
-        "feature engineering",
-        "nlp",
-    ],
-    "App Developer": [
-        "java",
-        "kotlin",
-        "flutter",
-        "react native",
-        "api integration",
-        "android",
-        "ios",
-    ],
-    "DevOps Engineer": [
-        "linux",
-        "networking",
-        "docker",
-        "kubernetes",
-        "ci/cd",
-        "aws",
-        "bash",
-        "github actions",
-    ],
-    "UI/UX Designer": [
-        "figma",
-        "sketch",
-        "design thinking",
-        "color theory",
-        "typography",
-        "user testing",
-        "responsive design",
-        "adobe xd",
-    ],
-    "Marketing": ["seo", "content marketing", "google analytics"],
-    "Backend Developer": [
-        "python",
-        "java",
-        "django",
-        "flask",
-        "fastapi",
-        "postgresql",
-        "mongodb",
-        "rest api",
-        "docker",
-    ],
+    "AI Engineer":       ["machine learning", "deep learning", "tensorflow",
+                          "pytorch", "python", "nlp", "computer vision"],
+    "Web Developer":     ["html", "css", "javascript", "react", "node.js",
+                          "express.js", "mongodb", "mysql", "git"],
+    "Data Analyst":      ["excel", "sql", "power bi", "tableau", "python",
+                          "statistics", "pandas", "numpy", "google analytics"],
+    "Software Engineer": ["java", "c++", "python", "data structures",
+                          "algorithms", "oops", "debugging", "linux", "git"],
+    "Data Scientist":    ["python", "pandas", "numpy", "scikit-learn",
+                          "machine learning", "deep learning", "tensorflow",
+                          "pytorch", "statistics", "data wrangling",
+                          "feature engineering", "nlp"],
+    "App Developer":     ["java", "kotlin", "flutter", "react native",
+                          "api integration", "android", "ios"],
+    "DevOps Engineer":   ["linux", "networking", "docker", "kubernetes",
+                          "ci/cd", "aws", "bash", "github actions"],
+    "UI/UX Designer":    ["figma", "sketch", "design thinking", "color theory",
+                          "typography", "user testing", "responsive design",
+                          "adobe xd"],
+    "Marketing":         ["seo", "content marketing", "google analytics"],
+    "Backend Developer": ["python", "java", "django", "flask", "fastapi",
+                          "postgresql", "mongodb", "rest api", "docker"],
 }
 
 ROLE_CONTEXT_KEYWORDS: dict[str, list[str]] = {
-    "Data Scientist": [
-        "data scientist",
-        "predictive model",
-        "machine learning model",
-        "classification",
-        "regression",
-        "clustering",
-        "model accuracy",
-        "scikit",
-        "random forest",
-        "logistic regression",
-        "feature engineering",
-        "model evaluation",
-    ],
-    "Data Analyst": [
-        "data analyst",
-        "dashboard",
-        "business insight",
-        "reporting",
-        "kpi",
-        "data-driven",
-        "trend analysis",
-        "pivot table",
-    ],
-    "AI Engineer": [
-        "ai engineer",
-        "deep learning",
-        "neural network",
-        "transformer",
-        "llm",
-        "nlp pipeline",
-        "model deployment",
-        "inference",
-    ],
-    "Web Developer": [
-        "web developer",
-        "frontend",
-        "backend",
-        "full stack",
-        "rest api",
-        "responsive",
-        "web application",
-    ],
-    "Software Engineer": [
-        "software engineer",
-        "software developer",
-        "system design",
-        "microservices",
-        "object oriented",
-    ],
-    "DevOps Engineer": [
-        "devops",
-        "ci/cd pipeline",
-        "deployment",
-        "infrastructure",
-        "container",
-        "orchestration",
-        "terraform",
-    ],
-    "App Developer": [
-        "mobile app",
-        "android",
-        "ios",
-        "flutter app",
-        "play store",
-        "app store",
-        "mobile development",
-    ],
-    "UI/UX Designer": [
-        "ui designer",
-        "ux designer",
-        "wireframe",
-        "prototype",
-        "user research",
-        "usability",
-        "design system",
-    ],
-    "Backend Developer": [
-        "backend developer",
-        "api development",
-        "server side",
-        "database design",
-        "microservice",
-    ],
-    "Marketing": [
-        "digital marketing",
-        "campaign",
-        "seo strategy",
-        "content strategy",
-        "social media",
-        "brand awareness",
-        "lead generation",
-        "google ads",
-    ],
+    "Data Scientist":    ["data scientist", "predictive model", "machine learning model",
+                          "classification", "regression", "clustering", "model accuracy",
+                          "scikit", "random forest", "logistic regression",
+                          "feature engineering", "model evaluation"],
+    "Data Analyst":      ["data analyst", "dashboard", "business insight", "reporting",
+                          "kpi", "data-driven", "trend analysis", "pivot table"],
+    "AI Engineer":       ["ai engineer", "deep learning", "neural network", "transformer",
+                          "llm", "nlp pipeline", "model deployment", "inference"],
+    "Web Developer":     ["web developer", "frontend", "backend", "full stack",
+                          "rest api", "responsive", "web application"],
+    "Software Engineer": ["software engineer", "software developer", "system design",
+                          "microservices", "object oriented"],
+    "DevOps Engineer":   ["devops", "ci/cd pipeline", "deployment", "infrastructure",
+                          "container", "orchestration", "terraform"],
+    "App Developer":     ["mobile app", "android", "ios", "flutter app",
+                          "play store", "app store", "mobile development"],
+    "UI/UX Designer":    ["ui designer", "ux designer", "wireframe", "prototype",
+                          "user research", "usability", "design system"],
+    "Backend Developer": ["backend developer", "api development", "server side",
+                          "database design", "microservice"],
+    "Marketing":         ["digital marketing", "campaign", "seo strategy",
+                          "content strategy", "social media", "brand awareness",
+                          "lead generation", "google ads"],
 }
 
 ADDRESS_WORDS: set[str] = {
-    "sector",
-    "road",
-    "street",
-    "india",
-    "nagar",
-    "colony",
-    "phase",
-    "block",
-    "district",
-    "village",
-    "tehsil",
-    "pin",
+    "sector", "road", "street", "india", "nagar", "colony",
+    "phase", "block", "district", "village", "tehsil", "pin",
 }
 
 # Lines that look like project titles but are NOT
 _FALSE_PROJECT_WORDS = {
-    "project",
-    "projects",
-    "description",
-    "overview",
-    "title",
-    "details",
-    "summary",
+    "project", "projects", "description", "overview",
+    "title", "details", "summary",
 }
 
 
@@ -491,20 +252,17 @@ _FALSE_PROJECT_WORDS = {
 # ─────────────────────────────────────────────
 def _load_pdf_libs():
     import pdfplumber
-
     return pdfplumber
 
 
 def _load_ocr_libs():
     import pytesseract
     from PIL import Image
-
     return pytesseract, Image
 
 
 def _load_plotly():
     import plotly.graph_objects as go
-
     return go
 
 
@@ -518,7 +276,6 @@ def extract_text(file_bytes: bytes, file_type: str) -> tuple[str, str]:
     Keeping st.* calls outside so cache works safely.
     """
     from io import BytesIO
-
     text = ""
     error = ""
     try:
@@ -554,7 +311,9 @@ def parse_name(lines: list[str]) -> str:
 
 
 def parse_email(text: str) -> str:
-    matches = re.findall(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-z]{2,}", text)
+    matches = re.findall(
+        r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-z]{2,}", text
+    )
     return matches[0] if matches else "Not Found"
 
 
@@ -574,8 +333,10 @@ def parse_phone(text: str) -> str:
 
 
 def parse_links(text: str) -> tuple[str, str]:
-    github = re.findall(r"https?://github\.com/[\w\-]+(?:/[\w\-\.]+)*", text)
-    linkedin = re.findall(r"https?://(?:www\.)?linkedin\.com/in/[\w\-]+/?", text)
+    github   = re.findall(r"https?://github\.com/[\w\-]+(?:/[\w\-\.]+)*", text)
+    linkedin = re.findall(
+        r"https?://(?:www\.)?linkedin\.com/in/[\w\-]+/?", text
+    )
     return (github[0] if github else ""), (linkedin[0] if linkedin else "")
 
 
@@ -611,7 +372,9 @@ def extract_skills_section(text: str) -> str:
 def parse_skills(text: str) -> list[str]:
     skills_text = extract_skills_section(text)
     # FIX: only fall back to full text if skills section truly empty
-    search_text = skills_text if len(skills_text.strip()) > 20 else text.lower()
+    search_text = (
+        skills_text if len(skills_text.strip()) > 20 else text.lower()
+    )
     found: set[str] = set()
     for skill in SKILLS_DB:
         pattern = r"(?<![a-zA-Z])" + re.escape(skill) + r"(?![a-zA-Z])"
@@ -632,7 +395,9 @@ def parse_experience(text_lower: str) -> float:
         text_lower,
     )
 
-    date_ranges = re.findall(r"(\d{4})\s*(?:–|—|−|-|to)\s*(\d{4})", normalized)
+    date_ranges = re.findall(
+        r"(\d{4})\s*(?:–|—|−|-|to)\s*(\d{4})", normalized
+    )
     max_exp = 0.0
     for start, end in date_ranges:
         s, e = int(start), int(end)
@@ -744,18 +509,18 @@ def detect_role(skills: list[str], text_lower: str) -> tuple[str, int]:
     weighted: dict[str, float] = {}
 
     for role, role_skills in ROLE_SKILLS.items():
-        matched = sum(1 for s in role_skills if s in skill_set)
-        max_s = len(role_skills) or 1
+        matched  = sum(1 for s in role_skills if s in skill_set)
+        max_s    = len(role_skills) or 1
         skill_sc = matched / max_s * 60
 
-        ctx_kws = ROLE_CONTEXT_KEYWORDS.get(role, [])
-        max_c = len(ctx_kws) or 1
+        ctx_kws  = ROLE_CONTEXT_KEYWORDS.get(role, [])
+        max_c    = len(ctx_kws) or 1
         ctx_hits = sum(1 for kw in ctx_kws if kw in text_lower)
-        ctx_sc = min(ctx_hits / max_c * 40, 40)
+        ctx_sc   = min(ctx_hits / max_c * 40, 40)
 
         weighted[role] = round(skill_sc + ctx_sc, 2)
 
-    best = max(weighted, key=lambda r: weighted[r])
+    best       = max(weighted, key=lambda r: weighted[r])
     confidence = min(round(weighted[best]), 100)
 
     if confidence < 15:
@@ -777,18 +542,16 @@ def ats_score(
     certs: list[str],
 ) -> int:
     s = 0
-    s += min(len(skills) * 4, 25)  # max 25
-    s += min(len(projects) * 8, 20)  # max 20
+    s += min(len(skills)   * 4, 25)   # max 25
+    s += min(len(projects) * 8, 20)   # max 20
     # FIX: intern (0.5 yr) → 4 pts, 1yr → 8, 2yr → 16, cap 20
-    s += min(int(experience * 8), 20)  # max 20
-    s += 8 if github else 0
-    s += 7 if linkedin else 0
-    s += (
-        10
-        if (name != "Not Found" and email != "Not Found")
-        else (5 if (name != "Not Found" or email != "Not Found") else 0)
+    s += min(int(experience * 8), 20) # max 20
+    s += 8  if github   else 0
+    s += 7  if linkedin else 0
+    s += 10 if (name != "Not Found" and email != "Not Found") else (
+          5 if (name != "Not Found" or email != "Not Found") else 0
     )
-    s += min(len(certs) * 5, 10)  # max 10
+    s += min(len(certs) * 5, 10)      # max 10
     return min(s, 100)
 
 
@@ -812,159 +575,133 @@ def build_suggestions(
     if role in ROLE_SKILLS:
         missing = [s for s in ROLE_SKILLS[role] if s not in skill_set]
         if missing:
-            sugs.append(
-                {
-                    "level": "critical",
-                    "title": f"Missing key skills for {role}",
-                    "detail": (
-                        f"Add these to your Skills section: "
-                        f"<b>{', '.join(missing[:5])}</b>. "
-                        "ATS systems filter resumes by these keywords."
-                    ),
-                }
-            )
+            sugs.append({
+                "level": "critical",
+                "title": f"Missing key skills for {role}",
+                "detail": (
+                    f"Add these to your Skills section: "
+                    f"<b>{', '.join(missing[:5])}</b>. "
+                    "ATS systems filter resumes by these keywords."
+                ),
+            })
 
     # Skills count
     if len(skills) < 6:
-        sugs.append(
-            {
-                "level": "critical",
-                "title": "Too few skills listed",
-                "detail": (
-                    f"Only <b>{len(skills)}</b> skill(s) detected. "
-                    "ATS expects 8–15. Add a dedicated 'Technical Skills' section."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "critical",
+            "title": "Too few skills listed",
+            "detail": (
+                f"Only <b>{len(skills)}</b> skill(s) detected. "
+                "ATS expects 8–15. Add a dedicated 'Technical Skills' section."
+            ),
+        })
     elif len(skills) < 10:
-        sugs.append(
-            {
-                "level": "warn",
-                "title": "Add more skills",
-                "detail": (
-                    f"<b>{len(skills)}</b> skills found. "
-                    "Aim for 10+ relevant technologies for better ATS ranking."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "warn",
+            "title": "Add more skills",
+            "detail": (
+                f"<b>{len(skills)}</b> skills found. "
+                "Aim for 10+ relevant technologies for better ATS ranking."
+            ),
+        })
 
     # Projects
     if len(projects) == 0:
-        sugs.append(
-            {
-                "level": "critical",
-                "title": "No projects detected",
-                "detail": (
-                    "Add 2–3 projects with: tech stack used + measurable outcome "
-                    "(e.g., 'Built ML model achieving 92% accuracy')."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "critical",
+            "title": "No projects detected",
+            "detail": (
+                "Add 2–3 projects with: tech stack used + measurable outcome "
+                "(e.g., 'Built ML model achieving 92% accuracy')."
+            ),
+        })
     elif len(projects) < 2:
-        sugs.append(
-            {
-                "level": "warn",
-                "title": "Add more projects",
-                "detail": "Only 1 project found. Recruiters expect 2–3 with clear outcomes.",
-            }
-        )
+        sugs.append({
+            "level": "warn",
+            "title": "Add more projects",
+            "detail": "Only 1 project found. Recruiters expect 2–3 with clear outcomes.",
+        })
 
     # Experience
     if experience == 0:
-        sugs.append(
-            {
-                "level": "critical",
-                "title": "No work experience found",
-                "detail": (
-                    "Add internship, freelance, or part-time work. "
-                    "Even 3 months significantly improves ATS score."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "critical",
+            "title": "No work experience found",
+            "detail": (
+                "Add internship, freelance, or part-time work. "
+                "Even 3 months significantly improves ATS score."
+            ),
+        })
     elif experience < 1:
-        sugs.append(
-            {
-                "level": "warn",
-                "title": "Experience is short",
-                "detail": (
-                    f"Only <b>{experience}</b> year(s) found. "
-                    "Supplement with strong projects and certifications."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "warn",
+            "title": "Experience is short",
+            "detail": (
+                f"Only <b>{experience}</b> year(s) found. "
+                "Supplement with strong projects and certifications."
+            ),
+        })
 
     # Links
     if not github:
-        sugs.append(
-            {
-                "level": "warn",
-                "title": "GitHub profile missing",
-                "detail": (
-                    "Add your GitHub URL. Tech recruiters check it "
-                    "directly to evaluate your code quality."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "warn",
+            "title": "GitHub profile missing",
+            "detail": (
+                "Add your GitHub URL. Tech recruiters check it "
+                "directly to evaluate your code quality."
+            ),
+        })
     if not linkedin:
-        sugs.append(
-            {
-                "level": "warn",
-                "title": "LinkedIn profile missing",
-                "detail": (
-                    "LinkedIn URL increases callback rate by 30%+. "
-                    "Ensure your profile matches your resume."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "warn",
+            "title": "LinkedIn profile missing",
+            "detail": (
+                "LinkedIn URL increases callback rate by 30%+. "
+                "Ensure your profile matches your resume."
+            ),
+        })
 
     # Certifications
     if not certs:
-        sugs.append(
-            {
-                "level": "warn",
-                "title": "No certifications mentioned",
-                "detail": (
-                    "Add certifications like: Google Data Analytics, "
-                    "AWS Cloud Practitioner, Coursera ML, Meta Front-End Developer."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "warn",
+            "title": "No certifications mentioned",
+            "detail": (
+                "Add certifications like: Google Data Analytics, "
+                "AWS Cloud Practitioner, Coursera ML, Meta Front-End Developer."
+            ),
+        })
 
     # Overall score feedback
     if score >= 85:
-        sugs.append(
-            {
-                "level": "good",
-                "title": "Strong resume overall! 🎉",
-                "detail": (
-                    f"ATS score <b>{score}/100</b>. "
-                    "Now tailor it to each specific job description for best results."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "good",
+            "title": "Strong resume overall! 🎉",
+            "detail": (
+                f"ATS score <b>{score}/100</b>. "
+                "Now tailor it to each specific job description for best results."
+            ),
+        })
     elif score >= 60:
-        sugs.append(
-            {
-                "level": "warn",
-                "title": "Resume is decent — polish it further",
-                "detail": (
-                    f"Score: <b>{score}/100</b>. Focus on adding missing skills, "
-                    "quantified project outcomes, and certifications."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "warn",
+            "title": "Resume is decent — polish it further",
+            "detail": (
+                f"Score: <b>{score}/100</b>. Focus on adding missing skills, "
+                "quantified project outcomes, and certifications."
+            ),
+        })
     else:
-        sugs.append(
-            {
-                "level": "critical",
-                "title": "Resume needs major improvements",
-                "detail": (
-                    f"Score: <b>{score}/100</b>. Priority actions: "
-                    "① Add Skills section ② Add 2+ projects with outcomes "
-                    "③ Include all contact details ④ Add certifications."
-                ),
-            }
-        )
+        sugs.append({
+            "level": "critical",
+            "title": "Resume needs major improvements",
+            "detail": (
+                f"Score: <b>{score}/100</b>. Priority actions: "
+                "① Add Skills section ② Add 2+ projects with outcomes "
+                "③ Include all contact details ④ Add certifications."
+            ),
+        })
 
     return sugs
 
@@ -984,24 +721,15 @@ def build_missing(
     certs: list[str],
 ) -> list[str]:
     m: list[str] = []
-    if name == "Not Found":
-        m.append("Full name not detected — place it at the very top")
-    if email == "Not Found":
-        m.append("Email address is missing")
-    if phone == "Not Found":
-        m.append("Phone number is missing")
-    if not github:
-        m.append("GitHub profile URL not found")
-    if not linkedin:
-        m.append("LinkedIn profile URL not found")
-    if len(skills) < 3:
-        m.append("Skills section missing or too sparse (< 3 skills)")
-    if len(projects) == 0:
-        m.append("Projects section not found")
-    if experience == 0:
-        m.append("Work / internship experience not found")
-    if not certs:
-        m.append("No certifications mentioned")
+    if name  == "Not Found": m.append("Full name not detected — place it at the very top")
+    if email == "Not Found": m.append("Email address is missing")
+    if phone == "Not Found": m.append("Phone number is missing")
+    if not github:           m.append("GitHub profile URL not found")
+    if not linkedin:         m.append("LinkedIn profile URL not found")
+    if len(skills) < 3:     m.append("Skills section missing or too sparse (< 3 skills)")
+    if len(projects) == 0:  m.append("Projects section not found")
+    if experience == 0:     m.append("Work / internship experience not found")
+    if not certs:           m.append("No certifications mentioned")
     return m
 
 
@@ -1009,20 +737,12 @@ def build_missing(
 # DOWNLOAD REPORT
 # ─────────────────────────────────────────────
 def build_text_report(
-    name: str,
-    email: str,
-    phone: str,
-    github: str,
-    linkedin: str,
-    skills: list[str],
-    projects: list[str],
-    experience: float,
-    certs: list[str],
-    role: str,
-    conf: int,
-    score: int,
-    suggestions: list[dict],
-    missing: list[str],
+    name: str, email: str, phone: str,
+    github: str, linkedin: str,
+    skills: list[str], projects: list[str],
+    experience: float, certs: list[str],
+    role: str, conf: int, score: int,
+    suggestions: list[dict], missing: list[str],
 ) -> str:
     lines = [
         "=" * 55,
@@ -1102,16 +822,13 @@ def make_chart(
     values = [skill_count, round(experience, 1), project_count, cert_count]
     colors = ["#4facfe", "#43e97b", "#f7971e", "#a18cd1"]
 
-    fig = go.Figure(
-        go.Bar(
-            x=labels,
-            y=values,
-            marker_color=colors,
-            text=values,
-            textposition="outside",
-            cliponaxis=False,
-        )
-    )
+    fig = go.Figure(go.Bar(
+        x=labels, y=values,
+        marker_color=colors,
+        text=values,
+        textposition="outside",
+        cliponaxis=False,
+    ))
     fig.update_layout(
         margin=dict(t=30, b=20, l=10, r=10),
         plot_bgcolor="rgba(0,0,0,0)",
@@ -1148,7 +865,7 @@ if uploaded_file:
         progress_placeholder = st.empty()
 
         def show_step(msg: str, done: bool = False):
-            cls = "step-done" if done else "step-bar"
+            cls  = "step-done" if done else "step-bar"
             icon = "✓" if done else "⟳"
             progress_placeholder.markdown(
                 f"<div class='{cls}'>{icon} {msg}</div>",
@@ -1169,47 +886,28 @@ if uploaded_file:
             show_step("File read ✓  —  Analyzing...", done=True)
 
             text_lower = raw_text.lower()
-            lines = [l.strip() for l in raw_text.split("\n") if l.strip()]
+            lines      = [l.strip() for l in raw_text.split("\n") if l.strip()]
 
-            name = parse_name(lines)
-            email = parse_email(raw_text)
-            phone = parse_phone(raw_text)
+            name             = parse_name(lines)
+            email            = parse_email(raw_text)
+            phone            = parse_phone(raw_text)
             github, linkedin = parse_links(raw_text)
-            skills = parse_skills(raw_text)
-            experience = parse_experience(text_lower)
-            projects = parse_projects(lines)
-            certs = parse_certifications(raw_text)
-            role, conf = detect_role(skills, text_lower)
-            score = ats_score(
-                skills,
-                projects,
-                experience,
-                github,
-                linkedin,
-                name,
-                email,
-                certs,
+            skills           = parse_skills(raw_text)
+            experience       = parse_experience(text_lower)
+            projects         = parse_projects(lines)
+            certs            = parse_certifications(raw_text)
+            role, conf       = detect_role(skills, text_lower)
+            score            = ats_score(
+                skills, projects, experience,
+                github, linkedin, name, email, certs,
             )
             suggestions = build_suggestions(
-                skills,
-                projects,
-                experience,
-                github,
-                linkedin,
-                score,
-                role,
-                certs,
+                skills, projects, experience,
+                github, linkedin, score, role, certs,
             )
             missing = build_missing(
-                name,
-                email,
-                phone,
-                github,
-                linkedin,
-                skills,
-                projects,
-                experience,
-                certs,
+                name, email, phone, github, linkedin,
+                skills, projects, experience, certs,
             )
 
             progress_placeholder.empty()
@@ -1223,7 +921,9 @@ if uploaded_file:
                 # ATS Score
                 st.subheader("ATS Score")
                 color = (
-                    "#e53935" if score < 50 else "#f57c00" if score < 75 else "#43a047"
+                    "#e53935" if score < 50
+                    else "#f57c00" if score < 75
+                    else "#43a047"
                 )
                 st.markdown(
                     f"<p class='score-badge' style='color:{color}'>"
@@ -1233,7 +933,11 @@ if uploaded_file:
                     unsafe_allow_html=True,
                 )
                 st.progress(score / 100)
-                st.caption("🔴 < 50  Poor" "  |  🟡 50–74  Fair" "  |  🟢 75+  Good")
+                st.caption(
+                    "🔴 < 50  Poor"
+                    "  |  🟡 50–74  Fair"
+                    "  |  🟢 75+  Good"
+                )
 
                 # Role
                 st.subheader("Detected Role")
@@ -1243,8 +947,8 @@ if uploaded_file:
                 # Contact
                 st.subheader("Contact Info")
                 for label, value in [
-                    ("👤 Name", name),
-                    ("✉ Email", email),
+                    ("👤 Name",  name),
+                    ("✉ Email",  email),
                     ("📞 Phone", phone),
                 ]:
                     st.markdown(
@@ -1275,7 +979,10 @@ if uploaded_file:
                 )
                 if skills:
                     st.markdown(
-                        "".join(f"<span class='skill-tag'>{s}</span>" for s in skills),
+                        "".join(
+                            f"<span class='skill-tag'>{s}</span>"
+                            for s in skills
+                        ),
                         unsafe_allow_html=True,
                     )
                 else:
@@ -1299,10 +1006,8 @@ if uploaded_file:
                 st.subheader("Resume Metrics")
                 st.plotly_chart(
                     make_chart(
-                        len(skills),
-                        experience,
-                        len(projects),
-                        len(certs),
+                        len(skills), experience,
+                        len(projects), len(certs),
                     ),
                     use_container_width=True,
                 )
@@ -1323,11 +1028,9 @@ if uploaded_file:
                         css = (
                             "sug-card critical"
                             if sug["level"] == "critical"
-                            else (
-                                "sug-card good"
-                                if sug["level"] == "good"
-                                else "sug-card"
-                            )
+                            else "sug-card good"
+                            if sug["level"] == "good"
+                            else "sug-card"
                         )
                         st.markdown(
                             f"<div class='{css}'>"
@@ -1345,7 +1048,8 @@ if uploaded_file:
                     st.markdown(
                         "<div class='missing-box'>"
                         + "".join(
-                            f"<div class='missing-item'>⚠ {m}</div>" for m in missing
+                            f"<div class='missing-item'>⚠ {m}</div>"
+                            for m in missing
                         )
                         + "</div>",
                         unsafe_allow_html=True,
@@ -1363,20 +1067,9 @@ if uploaded_file:
             # DOWNLOAD REPORT
             # ══════════════════════════════════════════════
             report_text = build_text_report(
-                name,
-                email,
-                phone,
-                github,
-                linkedin,
-                skills,
-                projects,
-                experience,
-                certs,
-                role,
-                conf,
-                score,
-                suggestions,
-                missing,
+                name, email, phone, github, linkedin,
+                skills, projects, experience, certs,
+                role, conf, score, suggestions, missing,
             )
             st.download_button(
                 label="📥 Download Full Report (.txt)",
