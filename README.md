@@ -27,7 +27,7 @@ An AI-powered Resume Analyzer built using Streamlit.
 
 ## 🌐 Live Demo
 Try the app here:  
-https://ai-resume-analyzer-bzak5mrubpnar9z2ubzg8l.streamlit.app/
+https://ai-resume-analyzer-bzak5mrubpnar9z2ubzg8l.streamlit.app
 
 ## ▶️ Run Locally
 
